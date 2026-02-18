@@ -9,14 +9,11 @@ export default async function GetCharacters(){
     const characters = await response.json();
     
     return(
-        <>            
-            {
-                characters.results.map((character)=>(
-                    <>
-                    <Link href={"/characters/" + character.id}>{character.name}</Link><br />
-                    </>
-                ))
-            }
-        </>
+        characters.results.map((character)=>(
+            <>
+                <Link key={character.id} href={"/characters/" + character.id}>{character.name}</Link>
+                <br/>
+            </>
+        ))
     )
 };
