@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Character from "@/components/Character";
 
 export default async function CharacterDetail(props) {
     const {id} = await props.params;
@@ -11,10 +11,6 @@ export default async function CharacterDetail(props) {
     const character = await response.json();
 
     return(
-        <>
-            <p>{character.name}</p>
-            <p>{character.species}</p>
-            <img src={character.image} alt={"An image of" + character.name} height={100} width={200}></img>
-        </>
+        <Character name={character.name} species={character.species} image={character.image}/>
     )   
 }
