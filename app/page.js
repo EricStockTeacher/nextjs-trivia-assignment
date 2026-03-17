@@ -1,7 +1,15 @@
 import Image from "next/image";
 import {client} from "@/sanity/lib/client.js"
 import { defineQuery } from "next-sanity";
-import { PortableText } from "@portabletext/react";
+import { PortableText } from "next-sanity";
+import { urlFor } from "@/sanity/lib/image";
+
+
+const myPortableTextComponents = {
+  types: {
+    image: ({ value }) => <img src={urlFor(value).url()} />,
+  },
+};
 
 
 export default async function Home() {
@@ -15,7 +23,7 @@ export default async function Home() {
       <p>Welcome to the page, checkout some of the characters</p>
       <Image alt="Eric" src="/Eric.jpg" width={200} height={200}></Image>
       {greeting.map((item, index) => (
-        <PortableText key={index} value={item.content} />
+        <PortableText key={index} value={item.content} components={myPortableTextComponents} />
       ))}
     </>
   );
