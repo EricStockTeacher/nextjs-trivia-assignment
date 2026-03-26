@@ -1,10 +1,11 @@
-import { gameData } from "@/app/gameData";
-
+//import { gameData } from "@/app/gameData";
+import { connectToDB } from "@/app/api/db";
 
 export async function GET(request,{params}) {
+    const {db} = await connectToDB();
     const {id} = await params;
-    const currentGame = gameData.find(game => game.id == parseInt(id))
-    console.log(gameData);
+
+    const currentGame = await db.collection("my_games").findOne({id: parseInt(id)});
     if (!currentGame) {
         return new Response("Game not found", {status: 404});
     }
@@ -15,31 +16,13 @@ export async function GET(request,{params}) {
     });
 }
 
-export async function POST(request) {
-    const newGame = await request.json();
-
-    gameData.push(newGame);
-    console.log(gameData);
-    return new Response(
-        "Game added successfully",
-        {
-            status: 201,
-        }
-    )
-}
-
 export async function DELETE(request, {params}) {
+    const {db} = await connectToDB();
     const {id} = await params;
-    const indexToRemove = gameData.findIndex(game => game.id == parseInt(id));
-
-    if (indexToRemove === -1) {
-        return new Response("Game not found", {status: 404});
-    }
-
-    gameData.splice(indexToRemove, 1);
-    console.log(gameData);
+    const deleteResult = await db.collection("my_games").deleteOne({id: parseInt(id)});
+    const returnString = deleteResult.deletedCount === 1 ? "Game deleted successfully" : "Game not found";
     return new Response(
-        "Game deleted successfully",
+        returnString,
         {
             status: 200,
         }
