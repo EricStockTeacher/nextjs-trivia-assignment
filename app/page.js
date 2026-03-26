@@ -6,9 +6,9 @@ import { PortableText } from "@portabletext/react";
 
 
 export default async function Home() {
-  // const GREETING_QUERY = defineQuery("*[_type=='greetingItem']{content}")
+  const GREETING_QUERY = defineQuery("*[_type=='greetingItem']{content}")
 
-  // const greeting = await client.fetch(GREETING_QUERY)
+  const greeting = await client.fetch(GREETING_QUERY)
 
   return (
     <>
@@ -41,9 +41,9 @@ experience for the benefit of members, partners and the public.</p><br></br>
       <br></br>
       <Link href="https://ccnbikes.com/#!/">REGISTER HERE!</Link>
 
-      {/* {greeting.map((item, index) => (
+      {greeting.map((item, index) => (
         <PortableText key={index} value={item.content} />
-      ))} */}
+      ))}
     </>
   );
 }
