@@ -423,12 +423,8 @@ export default function Membership() {
                     referred to herein. In all cases, the actual policy documents will
                     supersede the contents and representations herein.
                 </p>
+                <News />
             </section>
         </main>
     );
-        <>
-            <header>Memberships and Insurance</header>
-            <News />
-        </>
-    )
 }
