@@ -4,6 +4,8 @@ import {client} from "@/sanity/lib/client.js"
 import { defineQuery } from "next-sanity";
 import { PortableText } from "@portabletext/react";
 
+import News from "@/components/News.jsx";
+
 
 export default async function Home() {
   const GREETING_QUERY = defineQuery("*[_type=='greetingItem']{content}")
@@ -30,14 +32,7 @@ competitive and non-competitive events.
 Our mission is to create a well-recognized and safe, province-wide cycling community.
 We provide education and leadership to help create a vibrant and healthy cycling
 experience for the benefit of members, partners and the public.</p><br></br>
-      <b><h2>News</h2></b>
-      <ul>
-        <li>News Item 1</li>
-        <li>News Item 2</li>
-        <li>News Item 3</li>
-        <li>News Item 4</li>
-        <li>News Item 5</li>
-      </ul>
+      <News />
       <br></br>
       <Link href="https://ccnbikes.com/#!/">REGISTER HERE!</Link>
 

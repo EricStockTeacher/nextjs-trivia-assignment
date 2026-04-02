@@ -1,4 +1,5 @@
 import Link from "next/link";
+import News from "@/components/News.jsx";
 
 export default async function News() {
 
@@ -6,7 +7,7 @@ export default async function News() {
     
     return (
         <>
-        <h2>News</h2>
+        <News />
 
         <p>Latest News</p>
 

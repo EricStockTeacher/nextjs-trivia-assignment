@@ -1,3 +1,4 @@
+import News from "@/components/News.jsx";
 
 
 export default function Membership() {
@@ -425,4 +426,9 @@ export default function Membership() {
             </section>
         </main>
     );
+        <>
+            <header>Memberships and Insurance</header>
+            <News />
+        </>
+    )
 }
