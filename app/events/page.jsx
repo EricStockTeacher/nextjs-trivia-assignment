@@ -1,7 +1,6 @@
 import {PortableText} from '@portabletext/react'
-import createImageUrlBuilder from '@sanity/image-url'
+import {createImageUrlBuilder} from '@sanity/image-url'
 import {client} from '@/sanity/lib/client'
-
 import EventsTable from '@/components/EventsTable'
 import Membership from '@/components/Membership'
 import News from '@/components/News'
